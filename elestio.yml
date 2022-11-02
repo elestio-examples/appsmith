@@ -7,14 +7,14 @@ ports:
     public: true
     path: "/"
     isAuth: false
-  - protocol: "HTTPS"
-    targetProtocol: "HTTP"
-    listeningPort: "2443"
-    targetPort: "1443"
-    targetIP: "172.17.0.1"
-    public: true
-    path: "/"
-    isAuth: false
+  # - protocol: "HTTPS"
+  #   targetProtocol: "HTTP"
+  #   listeningPort: "2443"
+  #   targetPort: "1443"
+  #   targetIP: "172.17.0.1"
+  #   public: true
+  #   path: "/"
+  #   isAuth: false
 environments:
 
 config:
