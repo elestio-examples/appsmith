@@ -8,8 +8,8 @@ ports:
     path: "/"
     isAuth: false
 environments:
-  - key: "ADMIN_MAIL"
-    value: "[ADMIN_MAIL]"
+  - key: "ADMIN_EMAIL"
+    value: "[EMAIL]"
   - key: "ADMIN_PASSWORD"
     value: "random_password"
 
