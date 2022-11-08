@@ -24,3 +24,10 @@ curl http://${target}/api/v1/users/super \
   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36' \
   --data-raw 'name=root&email='$ADMIN_EMAIL'&password='$ADMIN_PASSWORD'&allowCollectingAnonymousData=true&signupForNewsletter=true&role=-&useCase=-' \
   --compressed
+
+
+docker-compose down;
+docker-compose up;
+
+echo "Restarting software ..."
+sleep 60s;
