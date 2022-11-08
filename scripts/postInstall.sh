@@ -26,8 +26,5 @@ curl http://${target}/api/v1/users/super \
   --compressed
 
 
-docker-compose down;
-docker-compose up;
-
 echo "Restarting software ..."
 sleep 60s;
