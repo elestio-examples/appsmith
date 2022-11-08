@@ -15,8 +15,8 @@ target=$(docker-compose port appsmith 80)
   sed -i "s|APPSMITH_MAIL_PORT=|APPSMITH_MAIL_PORT=${EMAIL_PORT}|g" ./stacks/configuration/docker.env
   sed -i "s|APPSMITH_MAIL_FROM=|APPSMITH_MAIL_FROM=${DEFAULT_FROM_EMAIL}|g" ./stacks/configuration/docker.env
 
-  docker-compose down;
-  docker-compose up;
+  # docker-compose down;
+  # docker-compose up;
 
 #   sleep 60s;
 
