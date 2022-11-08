@@ -13,9 +13,13 @@ curl http://${target}/api/v1/users/super \
   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
   -H 'content-type: application/x-www-form-urlencoded' \
   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36' \
-  --data-raw 'name=root&email=${ADMIN_EMAIL}&password=${ADMIN_PASSWORD}&allowCollectingAnonymousData=true&signupForNewsletter=true&role=-&useCase=-' \
+  --data-raw 'name=root&email='${ADMIN_EMAIL}'&password='${ADMIN_PASSWORD}'&allowCollectingAnonymousData=true&signupForNewsletter=true&role=-&useCase=-' \
   --compressed
 
+  sed -i "s|APPSMITH_MAIL_ENABLED=|APPSMITH_MAIL_ENABLED=true|g" ./stacks/configuration/docker.env
+  sed -i "s|APPSMITH_MAIL_HOST=|APPSMITH_MAIL_HOST=${EMAIL_HOST}|g" ./stacks/configuration/docker.env
+  sed -i "s|APPSMITH_MAIL_PORT=|APPSMITH_MAIL_PORT=${EMAIL_PORT}|g" ./stacks/configuration/docker.env
+  sed -i "s|APPSMITH_MAIL_FROM=|APPSMITH_MAIL_FROM=${DEFAULT_FROM_EMAIL}|g" ./stacks/configuration/docker.env
 
 
 # APPSMITH_MAIL_ENABLED=true
@@ -25,7 +29,6 @@ curl http://${target}/api/v1/users/super \
 # APPSMITH_MAIL_PASSWORD=
 # APPSMITH_MAIL_FROM=cicd-1v7c8-u353.vm.elestio.app@vm.elestio.app
 # APPSMITH_REPLY_TO=
-#   sed -i "s|APPSMITH_MAIL_HOST=|APPSMITH_MAIL_HOST=172.17.0.1|g" ./stacks/configuration/docker.env
 
 
 #   # login
