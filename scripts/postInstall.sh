@@ -18,6 +18,8 @@ target=$(docker-compose port appsmith 80)
   docker-compose down;
   docker-compose up;
 
+  sleep 60s;
+
 curl http://${target}/api/v1/users/super \
   -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
