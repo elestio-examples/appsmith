@@ -2,7 +2,7 @@ set env vars
 set -o allexport; source .env; set +o allexport;
 
 echo "Waiting for software to be ready ..."
-sleep 40s;
+# sleep 40s;
 
 
 target=$(docker-compose port appsmith 80)
@@ -20,21 +20,30 @@ target=$(docker-compose port appsmith 80)
 
 #   sleep 60s;
 
-curl http://${target}/api/v1/users/me \
-  -H 'accept: application/json, text/plain, */*' \
-  -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
-  -H 'cache-control: no-cache' \
-  -H 'pragma: no-cache' \
-  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36' \
-  --compressed
+# curl http://${target}/api/v1/users/me \
+#   -H 'accept: application/json, text/plain, */*' \
+#   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
+#   -H 'cache-control: no-cache' \
+#   -H 'pragma: no-cache' \
+#   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36' \
+#   --compressed
 
-curl http://${target}/api/v1/users/super \
-  -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
-  -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
-  -H 'content-type: application/x-www-form-urlencoded' \
-  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36' \
-  --data-raw 'name=root&email='$ADMIN_EMAIL'&password='$ADMIN_PASSWORD'&allowCollectingAnonymousData=true&signupForNewsletter=true&role=-&useCase=-' \
-  --compressed
+# curl http://${target}/api/v1/users/super \
+#   -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+#   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
+#   -H 'content-type: application/x-www-form-urlencoded' \
+#   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36' \
+#   --data-raw 'name=root&email='$ADMIN_EMAIL'&password='$ADMIN_PASSWORD'&allowCollectingAnonymousData=true&signupForNewsletter=true&role=-&useCase=-' \
+#   --compressed
+
+
+# curl http://${target}/api/v1/users/super \
+#   -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+#   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
+#   -H 'content-type: application/x-www-form-urlencoded' \
+#   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36' \
+#   --data-raw 'name=root&email=toto782@yopmail.com&password=123456&allowCollectingAnonymousData=true&signupForNewsletter=true&role=-&useCase=-' \
+#   --compressed
 
 #   sleep 30s;
 
@@ -50,15 +59,15 @@ curl http://${target}/api/v1/users/super \
 
 #   # login
 
-#   curl http://${target}/api/v1/login \
-#   -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
-#   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
-#   -H 'cache-control: max-age=0' \
-#   -H 'content-type: application/x-www-form-urlencoded' \
-#   -H 'upgrade-insecure-requests: 1' \
-#   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36' \
-#   --data-raw 'username=toto783@40yopmail.com&password=123456' \
-#   --compressed
+  # curl http://${target}/api/v1/login \
+  # -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+  # -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
+  # -H 'cache-control: max-age=0' \
+  # -H 'content-type: application/x-www-form-urlencoded' \
+  # -H 'upgrade-insecure-requests: 1' \
+  # -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36' \
+  # --data-raw 'username=toto783@40yopmail.com&password=123456' \
+  # --compressed
 
 
 #   curl http://${target}/api/v1/users/me \
