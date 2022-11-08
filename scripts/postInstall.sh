@@ -1,7 +1,8 @@
 set env vars
 set -o allexport; source .env; set +o allexport;
 
-sleep 30s;
+echo "Waiting for software to be ready ..."
+sleep 40s;
 
 
 target=$(docker-compose port appsmith 80)
@@ -20,6 +21,11 @@ curl http://${target}/api/v1/users/super \
   sed -i "s|APPSMITH_MAIL_HOST=|APPSMITH_MAIL_HOST=${EMAIL_HOST}|g" ./stacks/configuration/docker.env
   sed -i "s|APPSMITH_MAIL_PORT=|APPSMITH_MAIL_PORT=${EMAIL_PORT}|g" ./stacks/configuration/docker.env
   sed -i "s|APPSMITH_MAIL_FROM=|APPSMITH_MAIL_FROM=${DEFAULT_FROM_EMAIL}|g" ./stacks/configuration/docker.env
+
+  docker-compose down;
+  docker-compose up;
+
+  sleep 30s;
 
 
 # APPSMITH_MAIL_ENABLED=true
