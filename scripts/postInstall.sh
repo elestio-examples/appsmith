@@ -2,7 +2,7 @@ set env vars
 set -o allexport; source .env; set +o allexport;
 
 echo "Waiting for software to be ready ..."
-sleep 60s;
+sleep 120s;
 
 
 target=$(docker-compose port appsmith 80)
