@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   appsmith:
-    image: elestio4tech/appsmith:latest
+    image: elestio4tech/appsmith:${SOFTWARE_VERSION_TAG}
     ports:
       - "172.17.0.1:1780:80"
       # - "172.17.0.1:1443:443"
@@ -11,16 +11,16 @@ services:
     restart: always
     # Uncomment the lines below to enable auto-update
     labels:
-     com.centurylinklabs.watchtower.enable: "true"
+      com.centurylinklabs.watchtower.enable: "true"
 
   auto_update:
-   image: containrrr/watchtower:latest-dev
-   volumes:
-     - ./dockerSock:/var/run/docker.sock
-   # Update check interval in seconds.
-   command: --schedule "0 0 * ? * *" --label-enable --cleanup
-   restart: always
-   depends_on:
-     - appsmith
-   environment:
-     - WATCHTOWER_LIFECYCLE_HOOKS=true
+    image: containrrr/watchtower:${WATCHTOWER_TAG}
+    volumes:
+      - ./dockerSock:/var/run/docker.sock
+    # Update check interval in seconds.
+    command: --schedule "0 0 * ? * *" --label-enable --cleanup
+    restart: always
+    depends_on:
+      - appsmith
+    environment:
+      - WATCHTOWER_LIFECYCLE_HOOKS=${WATCHTOWER_LIFECYCLE_HOOKS}

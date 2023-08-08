@@ -38,7 +38,6 @@ Copy the .env file from tests folder to the project directory
 
 Edit the .env file with your own values.
 
-
 Run the project with the following command
 
     docker-compose up -d
@@ -52,7 +51,7 @@ Here are some example snippets to help you get started creating a container.
         version: "3.3"
         services:
         appsmith:
-            image: elestio4tech/appsmith:latest
+            image: elestio4tech/appsmith:${SOFTWARE_VERSION_TAG}
             ports:
             - "172.17.0.1:1780:80"
             # - "172.17.0.1:1443:443"
@@ -64,7 +63,7 @@ Here are some example snippets to help you get started creating a container.
             com.centurylinklabs.watchtower.enable: "true"
 
         auto_update:
-        image: containrrr/watchtower:latest-dev
+        image: containrrr/watchtower:${WATCHTOWER_TAG}
         volumes:
             - ./dockerSock:/var/run/docker.sock
         # Update check interval in seconds.
@@ -73,8 +72,15 @@ Here are some example snippets to help you get started creating a container.
         depends_on:
             - appsmith
         environment:
-            - WATCHTOWER_LIFECYCLE_HOOKS=true
+            - WATCHTOWER_LIFECYCLE_HOOKS=${WATCHTOWER_LIFECYCLE_HOOKS}
 
+### Environment variables
+
+|          Variable          | Value (example) |
+| :------------------------: | :-------------: |
+|    SOFTWARE_VERSION_TAG    |     latest      |
+|       WATCHTOWER_TAG       |     latest      |
+| WATCHTOWER_LIFECYCLE_HOOKS |      true       |
 
 # Maintenance
 
