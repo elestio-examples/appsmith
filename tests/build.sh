@@ -21,7 +21,7 @@ mv base.dockerfile Dockerfile
 sed -i 's~/jdk-$version/~/jdk-$(echo $version | sed 's/..$//')~g' Dockerfile
 sed -i 's~$(echo $version | tr + _)~$(echo $version | tr + _ | sed 's/..$//')~g' Dockerfile
 echo $DOCKER_PASSWORD | docker login  -u $DOCKER_USERNAME --password-stdin
-docker buildx build --platform linux/amd64,linux/arm64 . --output type=docker,name=elestio4test/appsmith-base:latest --push
+docker buildx build --platform linux/amd64,linux/arm64 -t elestio4test/appsmith-base:latest . --push
 cd ../../
 
 sed -i "s~ARG BASE~ARG BASE="elestio4test/appsmith-base"~g" Dockerfile
