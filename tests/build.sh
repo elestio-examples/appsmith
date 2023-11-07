@@ -18,7 +18,8 @@ cd ../../../../
 
 cd deploy/docker
 mv base.dockerfile Dockerfile
-sed -i "s~jdk-$version/OpenJDK17U-jdk_$(uname -m | sed s/x86_64/x64/)_linux_hotspot_$(echo $version | tr + _).tar.gz~jdk-$(echo $version | sed 's/..$//')/OpenJDK17U-jdk_$(uname -m | sed s/x86_64/x64/)_linux_hotspot_$(echo $version | tr + _ | sed 's/..$//').tar.gz~g" Dockerfile
+sed -i 's~/jdk-$version/~/jdk-$(echo $version | sed 's/..$//')~g' Dockerfile
+sed -i 's~$(echo $version | tr + _)~$(echo $version | tr + _ | sed 's/..$//')~g' Dockerfile
 docker buildx build . --output type=docker,name=appsmith-base | docker load
 cd ../../
 
