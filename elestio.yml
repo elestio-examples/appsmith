@@ -18,6 +18,8 @@ environments:
     value: "172.17.0.1"
   - key: "EMAIL_PORT"
     value: "25"
+  - key: "DOMAIN"
+    value: "[CI_CD_DOMAIN]"
 
 config:
   runTime: "dockerCompose"
